@@ -1,43 +1,54 @@
+CREATE DATABASE IF NOT EXISTS BANK;
+
+USE BANK; 
+
+CREATE DATABASE BANK;
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS Account;
+DROP TABLE IF EXISTS Transactions; 
+DROP TABLE IF EXISTS Loan;
+
 CREATE TABLE Customer(
-    CustomerID  INT NOT NULL AUTO_INCREMENT UNIQUE,
-    FName         varchar(50),
-    LName         varchar(50),
-    email         varchar(50),
-    AccountID     INT,
+	
+	CustomerID  INT NOT NULL AUTO_INCREMENT,
+    FName 		varchar(50),
+    LName 		varchar(50),
+    email 		varchar(50),
+    AccountID	INT,
     PRIMARY KEY (CustomerID),
     FOREIGN KEY (AccountID) REFERENCES Account(accountID) ON UPDATE CASCADE ON DELETE SET NULL
     );
-   
+    
 CREATE TABLE Account(
-    accountID INT NOT NULL AUTO_INCREMENT UNIQUE,
-    Balances      DECIMAL( 32, 2) ,
-    AccTypes      VARCHAR(10),
-    AccStatus     VARCHAR(3),
-    CustomerID    INT,
+	accountID 	 INT NOT NULL AUTO_INCREMENT,
+    Balances 	 DECIMAL( 32, 2) ,
+    AccTypes 	 VARCHAR(10),
+    AccStatus 	 VARCHAR(3),
+    CustomerID   INT,
     PRIMARY KEY (accountID),
     FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 CREATE TABLE Transaction(
-    TransactionID   INT NOT NULL AUTO_INCREMENT UNIQUE,
-    TransAmount     DECIMAL(32,2),
-    TransType       VARCHAR(15),
-    TransDate       TIMESTAMP,
-    AccID           INT,
-    CustomerID      INT,
+	TransactionID   INT NOT NULL AUTO_INCREMENT,
+	TransAmount 	DECIMAL(32,2),
+    TransType 		VARCHAR(15),
+    TransDate   	TIMESTAMP,
+    AccID       	INT,
+    CustomerID 		INT,
     PRIMARY KEY (TransactionID),
     FOREIGN KEY (AccID) REFERENCES Account(accountID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (customerID) REFERENCES Customer(CustomerID) ON UPDATE CASCADE ON DELETE SET NULL
+    
 );
 
 CREATE TABLE Loan(
-    LoanID         INT NOT NULL AUTO_INCREMENT UNIQUE,
-    LoanAmm        DECIMAL(32,2),
-    InterestRate   DOUBLE(3,2),
-    LoanStatus     VARCHAR(3),
-    customerID     INT,
-    AccID          INT,
+LoanID 		 INT NOT NULL AUTO_INCREMENT,
+LoanAmm		 DECIMAL(32,2),
+InterestRate DOUBLE(3,2),
+LoanStatus 	 VARCHAR(3),
+customerID   INT,
 PRIMARY KEY (LoanID),
-FOREIGN KEY (customerID) REFERENCES Customer(CustomerID) ON UPDATE CASCADE ON DELETE SET NULL,
-FOREIGN KEY (AccID) REFERENCES Account(accountID) ON UPDATE CASCADE ON DELETE SET NULL
+FOREIGN KEY (customerID) REFERENCES Customer(CustomerID) ON UPDATE CASCADE ON DELETE SET NULL
+
 );
