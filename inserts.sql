@@ -42,10 +42,16 @@ INSERT INTO Transaction(TransactionID, TransAmount, TransType, TransDate, AccID,
     '9997','5,000,312','PENTHOUSE','1999-12-28','6222','1113'
 )
 (
-    '9996','170,000','PORSCHE GT3','2019-5-24','3351','1114'
+    '9996','170,000',' PORSCHE GT3', '2019-5-24', '3351','1114'
 )
 
 INSERT INTO Loan(LoanID,LoanAmm,InterestRate,LoanStatus,customerID,AccID)
 (
-    '5555','90,000','6%','1111','1234'
+    '5555', '90,000','6%', '1111','1234'
+    
+    '5554','1,000,000','.05%','GRACE', '4321'
+    
+    '5553', '50,000','4%', 'REPAYMENT','6222'
+    
+    '5552', '100,000','4%', 'GRACE','3351'
 )
