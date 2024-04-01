@@ -1,0 +1,11 @@
+*.pyc
+*.DC_Store
+../.DS_Store
+**/__pycache__/
+.env
+    PASSWORD = root
+venv/
+lib/
+*.pyc
+*.DS_Store
+**/__pycache__/
