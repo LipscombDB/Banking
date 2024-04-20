@@ -11,7 +11,7 @@ my_password = str(os.environ.get('PASSWORD'))
 app = Flask(__name__, template_folder="../templates") # Flask constructor 
 db_cred = { 
     'user': 'root',         # DATABASE USER 
-    'pass': my_password,    # DATABASE PASSWORD 
+    'pass': 'root',    # DATABASE PASSWORD 
     'host': '127.0.0.1:3306',    # DATABASE HOSTNAME 
     'name': 'sakila'        # DATABASE NAME 
 } 
