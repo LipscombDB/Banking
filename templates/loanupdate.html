@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System - Loans</title>
+</head>
+<body>
+    <h3>Add Loan</h3>
+    <form action="/addLoan" method="POST">
+        <label>Loan Amount</label>
+        <input type="text" name="loanAmount" placeholder="loan amount...">
+        <label>Interest Rate</label>
+        <input type="text" name="interestRate" placeholder="interest rate...">
+        <label>Loan Status</label>
+        <input type="text" name="loanStatus" placeholder="loan status...">
+        <label>Customer ID</label>
+        <input type="text" name="customerID" placeholder="customer ID...">
+        <button type="submit">Add Loan</button>
+    </form>
+
+    <h3>Delete Loan</h3>
+    <form action="/deleteLoan" method="POST">
+        <label>Loan ID</label>
+        <input type="text" name="loanID" placeholder="loan ID...">
+        <button type="submit">Delete Loan</button>
+    </form>
+</body>
+</html>

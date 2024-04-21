@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System - Customers</title>
+</head>
+<body>
+    <h3>Add Customer</h3>
+    <form action="/addCustomer" method="POST">
+        <label>First Name</label>
+        <input type="text" name="fName" placeholder="first name...">
+        <label>Last Name</label>
+        <input type="text" name="lName" placeholder="last name...">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="email...">
+        <button type="submit">Add Customer</button>
+    </form>
+
+    <h3>Delete Customer</h3>
+    <form action="/deleteCustomer" method="POST">
+        <label>Customer ID</label>
+        <input type="text" name="customerID" placeholder="customer ID...">
+        <button type="submit">Delete Customer</button>
+    </form>
+</body>
+</html>

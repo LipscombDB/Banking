@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System - Accounts</title>
+</head>
+<body>
+    <h3>Add Account</h3>
+    <form action="/addAccount" method="POST">
+        <label>Balance</label>
+        <input type="text" name="balance" placeholder="balance...">
+        <label>Account Type</label>
+        <input type="text" name="accType" placeholder="account type...">
+        <label>Account Status</label>
+        <input type="text" name="accStatus" placeholder="account status...">
+        <button type="submit">Add Account</button>
+    </form>
+
+    <h3>Delete Account</h3>
+    <form action="/deleteAccount" method="POST">
+        <label>Account ID</label>
+        <input type="text" name="accID" placeholder="account ID...">
+        <button type="submit">Delete Account</button>
+    </form>
+</body>
+</html>

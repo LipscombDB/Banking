@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System - Transactions</title>
+</head>
+<body>
+    <h3>Add Transaction</h3>
+    <form action="/addTransaction" method="POST">
+        <label>Transaction Amount</label>
+        <input type="text" name="transAmount" placeholder="transaction amount...">
+        <label>Transaction Type</label>
+        <input type="text" name="transType" placeholder="transaction type...">
+        <label>Account ID</label>
+        <input type="text" name="accID" placeholder="account ID...">
+        <label>Customer ID</label>
+        <input type="text" name="customerID" placeholder="customer ID...">
+        <button type="submit">Add Transaction</button>
+    </form>
+
+    <h3>Delete Transaction</h3>
+    <form action="/deleteTransaction" method="POST">
+        <label>Transaction ID</label>
+        <input type="text" name="transID" placeholder="transaction ID...">
+        <button type="submit">Delete Transaction</button>
+    </form>
+</body>
+</html>
