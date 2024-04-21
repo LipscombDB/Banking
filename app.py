@@ -1,65 +1,65 @@
 from core import app
 from flask import redirect, request 
 from flask.templating import render_template
-from models import account, accountInfo
+from models import Account, Customer, Loans, Transaction
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-# A decorator used to tell the application 
-# which URL is associated with which function 
 @app.route('/hello')	 
 def hello(): 
-	return 'HELLO'
+    return 'HELLO'
 
-# APP ROUTE TO GET RESULTS FOR SELECT QUERY 
-@app.route('/get_accounts', methods=['GET','POST']) 
-def get_results(): 
-    accounts = account.get_accounts()  
-    return accounts 
+# Route to get all accounts
+@app.route('/get_accounts', methods=['GET', 'POST']) 
+def get_results_accounts(): 
+    accounts = Account.get_accounts()  
+    return render_template('accounts.html', accounts=accounts)
 
-# APP ROUTE TO RENDER HOME PAGE WITH LIST OF accountS
+# Route to get all customers
+@app.route('/get_customers', methods=['GET', 'POST'])
+def get_results_customers():
+    customers = Account.get_customers()
+    return render_template('customers.html', customers=customers)
+
+# Route to get all transactions
+@app.route('/get_transactions', methods=['GET', 'POST'])
+def get_results_transactions():
+    transactions = Transaction.get_transactions()
+    return render_template('transactions.html', transactions=transactions)
+
+# Route to get all loans
+@app.route('/get_loans', methods=['GET', 'POST'])
+def get_results_loans():
+    loans = Loans.get_loans()
+    return render_template('loans.html', loans=loans)
+
+# Route to render home page with list of accounts
 @app.route('/')
 def index():
-	# Query all data and then pass it to the template
-	accounts = account.get_accounts()
-	return render_template('index.html', accounts=accounts)
+    accounts = Account.get_accounts()
+    return render_template('index.html', accounts=accounts)
 
-# APP ROUTE TO RENDER FORM TO ADD account DATA
-@app.route('/add_data')
+# Route to render form to add account data
+@app.route('/add_account', methods=["GET", "POST"])
 def add_data():
-	return render_template('add_account.html')
+    if request.method == "POST":
+        balances = request.form.get("balances")
+        acc_type = request.form.get("acc_type")
+        acc_status = request.form.get("acc_status")
+        if balances and acc_type and acc_status:
+            add_account(balances, acc_type, acc_status)
+            return redirect('/')
+    return render_template('add_account.html')
 
-# APP ROUTE TO CALL FUNCTION TO ADD account
-@app.route('/add', methods=["POST"])
-def add_account():
-	
-	# In this function we will input data from the 
-	# form page and store it in our database.
-	# Remember that inside the get the name should
-	# exactly be the same as that in the html
-	# input fields
-	first_name = request.form.get("first_name")
-	last_name = request.form.get("last_name")
+# Route to delete an account
+@app.route('/delete_account/<int:id>')
+def delete_account_route(id):
+    Account.delete_account(id)
+    return redirect('/')
 
-	# call model function that will store data as a row in our datatable
-	if first_name != '' and last_name != '':
-		account.add_account(first_name, last_name)
-		return redirect('/')
-	else:
-		return redirect('/')
+# Additional routes for adding, updating, deleting for Customer, Transaction, Loan can be created similarly
 
-# APP ROUTE TO CALL FUNCTION TO DELETE account
-@app.route('/delete/<int:id>')
-def delete_account(id):
-	# Deletes the data on the basis of unique id and 
-	# redirects to home page
-	account.delete_account(id)
-	return redirect('/')
-
-# APP ROUTE TO CALL FUNCTION TO RETRIEVE AND RETURN account INFO
-@app.route('/account_info')
-def get_account_info():
-	return accountInfo.get_account_info()
-
-if __name__=='__main__': 
-    app.run(port=8000, debug=True) 
+if __name__ == '__main__': 
+    app.run(port=8000, debug=True)
 
 
