@@ -1,8 +1,6 @@
 from sqlalchemy import DateTime
 from core import db
 from sqlalchemy.sql import func
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
 
 class Account(db.Model):
     accountID = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
@@ -30,7 +28,3 @@ class Loan(db.Model):
     InterestRate = db.Column(db.Numeric, nullable=True)
     LoanStatus = db.Column(db.String(10), nullable=True)
     CustomerID = db.Column(db.Integer, db.ForeignKey('customer.CustomerID'), nullable=True)
-
-
-
-

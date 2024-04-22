@@ -1,4 +1,3 @@
-from sqlalchemy import func
 from models.schemas import Account  # Make sure this import matches your actual module structure
 from core import ma, db
 

@@ -1,4 +1,4 @@
-from sqlalchemy import func
+
 from models.schemas import Loan  # Ensure this import matches your project's structure
 from core import ma, db
 

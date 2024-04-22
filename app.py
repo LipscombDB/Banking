@@ -1,9 +1,7 @@
 from core import app
-from flask import redirect, request 
+from flask import redirect, request
 from flask.templating import render_template
-from models import Account, Customer, Loans, Transaction
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from models import Account,Customer,Transaction,Loans
 
 @app.route('/hello')	 
 def hello(): 
@@ -61,5 +59,3 @@ def delete_account_route(id):
 
 if __name__ == '__main__': 
     app.run(port=8000, debug=True)
-
-
