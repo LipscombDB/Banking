@@ -6,11 +6,11 @@ def get_transactions():
     all_transactions = Transaction.query.all()
     return transactions_schema.dump(all_transactions)
 
-def add_transaction(trans_amount, trans_type, acc_id, customer_id):
+def add_transaction(trans_amount, trans_type, trans_date, acc_id, customer_id):
     new_transaction = Transaction(
         TransAmount=trans_amount, 
         TransType=trans_type, 
-        TransDate=func.now(),  # Automatically set the transaction date to now
+        TransDate=trans_date,
         AccID=acc_id, 
         CustomerID=customer_id
     )

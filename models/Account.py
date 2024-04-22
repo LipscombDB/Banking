@@ -1,4 +1,4 @@
-from models.schemas import Account  # Make sure this import matches your actual module structure
+from models.schemas import Account  # Ensure this import matches your actual module structure
 from core import ma, db
 
 def get_accounts(): 
@@ -15,11 +15,12 @@ def delete_account(id):
     account = Account.query.get(id)
     db.session.delete(account)
     db.session.commit()
-     
+
 class AccountSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Account
         load_instance = True  # Optional: Add this if you want to load model instances automatically
 
+# Correct the variable name to `accounts_schema` with `many=True`
 account_schema = AccountSchema()
 accounts_schema = AccountSchema(many=True)

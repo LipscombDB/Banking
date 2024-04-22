@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Transaction</title>
+</head>
+<body>
+    <div>
+        <a href='/get_transactions'>Back</a>
+    </div>
+    <h1>Delete Transaction</h1>
+    <form action="/transaction_delete" method="POST">
+        <label for="transaction_id">Select Transaction ID:</label>
+        <select name="transaction_id" id="transaction_id" required>
+            {% for transaction in transactions %}
+                <option value="{{ transaction.TransactionID }}">{{ transaction.TransactionID }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Delete Transaction</button>
+    </form>
+</body>
+</html>
+
+

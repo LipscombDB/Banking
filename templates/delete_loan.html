@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Loan</title>
+</head>
+<body>
+    <div>
+        <a href="/get_loans">Back</a>
+    </div>
+    <h1>Delete Loan</h1>
+    <form action="/delete_loan" method="POST">
+        <label for="loan_id">Select Loan to Delete:</label>
+        <select name="loan_id" id="loan_id">
+            {% for loan in loans %}
+            <option value="{{ loan.LoanID }}">{{ loan.LoanID }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Delete Loan</button>
+    </form>
+</body>
+</html>

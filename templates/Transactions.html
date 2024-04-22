@@ -3,16 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Data</title>
+    <title>Transaction Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-
+    <div>
+        <a href="/">Back to Home</a>
+        <a href="/transaction_add">Add Transaction</a>
+        <a href="/transaction_delete_form">Delete Transaction</a>
+    </div>
     <h1>Transactions</h1>
-    <ul>
-        {% for transaction in transactions %}
-            <li>{{ transaction }}</li>
-        {% endfor %}
-    </ul>
-
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Account ID</th>
+                <th>Customer ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.TransactionID }}</td>
+                    <td>{{ transaction.TransAmount }}</td>
+                    <td>{{ transaction.TransType }}</td>
+                    <td>{{ transaction.TransDate }}</td>
+                    <td>{{ transaction.AccID }}</td>
+                    <td>{{ transaction.CustomerID }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

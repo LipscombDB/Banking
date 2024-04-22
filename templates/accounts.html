@@ -4,16 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
+    <div>
+        <a href="/">Back to Home</a> | 
+        <a href="/add_account">Add Account</a>
+        <a href="/delete_account">Delete Account</a>
+    </div>
+
     <h1>Accounts</h1>
-    <ul>
-        {% for account in accounts %}
-            <li>{{ account }}</li>
-        {% endfor %}
-    </ul>
-
-
-
+    <table>
+        <thead>
+            <tr>
+                <th>Account ID</th>
+                <th>Balance</th>
+                <th>Account Type</th>
+                <th>Account Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in accounts %}
+                <tr>
+                    <td>{{ account.accountID }}</td>
+                    <td>{{ account.Balances }}</td>
+                    <td>{{ account.AccType }}</td>
+                    <td>{{ account.AccStatus }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
+

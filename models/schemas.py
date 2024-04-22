@@ -19,12 +19,12 @@ class Transaction(db.Model):
     TransAmount = db.Column(db.Numeric(32, 2), nullable=True)
     TransType = db.Column(db.String(15), nullable=True)
     TransDate = db.Column(db.DateTime(timezone=True))
-    AccID = db.Column(db.Integer, db.ForeignKey('account.accountID'), nullable=True)
-    CustomerID = db.Column(db.Integer, db.ForeignKey('customer.CustomerID'), nullable=True)
+    AccID = db.Column(db.Integer, nullable=True)
+    CustomerID = db.Column(db.Integer, nullable=True)
 
 class Loan(db.Model):
     LoanID = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
     LoanAmount = db.Column(db.Numeric(32, 2), nullable=True)
     InterestRate = db.Column(db.Numeric, nullable=True)
     LoanStatus = db.Column(db.String(10), nullable=True)
-    CustomerID = db.Column(db.Integer, db.ForeignKey('customer.CustomerID'), nullable=True)
+    CustomerID = db.Column(db.Integer, nullable=True)

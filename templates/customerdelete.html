@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Customer</title>
+</head>
+<body>
+    <h1>Delete Customer</h1>
+    <form action="/delete_customer" method="POST">
+        <label for="customer_id">Select Customer to Delete:</label>
+        <select name="customer_id" id="customer_id">
+            {% for customer in customers %}
+                <option value="{{ customer.CustomerID }}">{{ customer.FName }} {{ customer.LName }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Delete Customer</button>
+    </form>
+</body>
+</html>

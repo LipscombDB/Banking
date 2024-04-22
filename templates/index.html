@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Data</title>
+    <title>Welcome to Our Banking Project</title>
 </head>
 <body>
-    <h1>Accounts</h1>
+    <div>
+        <h1>Welcome to Our Banking Project</h1>
+        <p>This is the database project for our banking system. Below are the links to view different data:</p>
+        <p>Project Members: Alan Ali, Ramy Ismail, Nana Mensah, Jackson Martin</p>
+    </div>
+
+    <h2>Accounts</h2>
     <ul>
-        {% for account in accounts %}
-            <li>{{ account }}</li>
-        {% endfor %}
+        <li><a href="/get_accounts">View Accounts</a></li>
     </ul>
 
-    <h1>Customers</h1>
+    <h2>Customers</h2>
     <ul>
-        {% for customer in customers %}
-            <li>{{ customer }}</li>
-        {% endfor %}
+        <li><a href="/get_customers">View Customers</a></li>
     </ul>
 
-    <h1>Transactions</h1>
+    <h2>Transactions</h2>
     <ul>
-        {% for transaction in transactions %}
-            <li>{{ transaction }}</li>
-        {% endfor %}
+        <li><a href="/get_transactions">View Transactions</a></li>
     </ul>
 
-    <h1>Loans</h1>
+    <h2>Loans</h2>
     <ul>
-        {% for loan in loans %}
-            <li>{{ loan }}</li>
-        {% endfor %}
+        <li><a href="/get_loans">View Loans</a></li>
     </ul>
 </body>
 </html>
+

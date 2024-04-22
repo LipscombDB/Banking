@@ -3,15 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Data</title>
+    <title>Loan Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-
+    <div>
+        <a href="/">Back to Home</a>
+        <a href="/add_loan">Add a loan</a>
+        <a href="/delete_loan_form">Delete a loan</a>
+    </div>
     <h1>Loans</h1>
-    <ul>
-        {% for loan in loans %}
-            <li>{{ loan }}</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Loan Amount</th>
+                <th>Interest Rate</th>
+                <th>Loan Status</th>
+                <th>Customer ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for loan in loans %}
+                <tr>
+                    <td>{{ loan.LoanID }}</td>
+                    <td>{{ loan.LoanAmount }}</td>
+                    <td>{{ loan.InterestRate }}</td>
+                    <td>{{ loan.LoanStatus }}</td>
+                    <td>{{ loan.CustomerID }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
