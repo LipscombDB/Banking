@@ -1,5 +1,5 @@
 
-from models.schemas import Transaction  # Adjust this import according to your actual module structure
+from models.schemas import Transaction
 from core import ma, db
 
 def get_transactions(): 
@@ -18,7 +18,6 @@ def add_transaction(trans_amount, trans_type, trans_date, acc_id, customer_id):
     db.session.commit()
 
 def delete_transaction(id):
-    # Deletes the transaction based on the unique TransactionID
     transaction = Transaction.query.get(id)
     db.session.delete(transaction)
     db.session.commit()
@@ -26,7 +25,7 @@ def delete_transaction(id):
 class TransactionSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Transaction
-        load_instance = True  # Optional: Allows for model instances to be automatically loaded
+        load_instance = True
 
 transaction_schema = TransactionSchema()
 transactions_schema = TransactionSchema(many=True)

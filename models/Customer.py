@@ -1,4 +1,4 @@
-from models.schemas import Customer  # Make sure this import matches your actual module structure
+from models.schemas import Customer
 from core import ma, db
 
 def get_customers(): 
@@ -11,7 +11,6 @@ def add_customer(first_name, last_name, email):
     db.session.commit()
 
 def delete_customer(id):
-    # Deletes the customer based on the unique CustomerID
     customer = Customer.query.get(id)
     db.session.delete(customer)
     db.session.commit()
@@ -19,7 +18,7 @@ def delete_customer(id):
 class CustomerSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Customer
-        load_instance = True  # Optional: Allows for model instances to be automatically loaded
+        load_instance = True
 
 customer_schema = CustomerSchema()
 customers_schema = CustomerSchema(many=True)

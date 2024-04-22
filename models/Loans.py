@@ -1,5 +1,5 @@
 
-from models.schemas import Loan  # Ensure this import matches your project's structure
+from models.schemas import Loan
 from core import ma, db
 
 def get_loans(): 
@@ -17,7 +17,6 @@ def add_loan(loan_amount, interest_rate, loan_status, customer_id):
     db.session.commit()
 
 def delete_loan(id):
-    # Deletes the loan based on the unique LoanID
     loan = Loan.query.get(id)
     db.session.delete(loan)
     db.session.commit()
@@ -25,7 +24,7 @@ def delete_loan(id):
 class LoanSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Loan
-        load_instance = True  # Optional: Facilitates the automatic loading of model instances
+        load_instance = True
 
 loan_schema = LoanSchema()
 loans_schema = LoanSchema(many=True)

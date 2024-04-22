@@ -7,37 +7,32 @@ from models import Account,Customer,Transaction,Loans
 def hello(): 
     return 'HELLO'
 
-# Route to get all accounts
 @app.route('/get_accounts', methods=['GET']) 
 def get_results_accounts(): 
     accounts = Account.get_accounts()  
     return render_template('accounts.html', accounts=accounts)
 
-# Route to get all customers
 @app.route('/get_customers', methods=['GET'])
 def get_results_customers():
     customers = Customer.get_customers()
     return render_template('customers.html', customers=customers)
 
-# Route to get all transactions
 @app.route('/get_transactions', methods=['GET'])
 def get_results_transactions():
     transactions = Transaction.get_transactions()
     return render_template('transactions.html', transactions=transactions)
 
-# Route to get all loans
+
 @app.route('/get_loans', methods=['GET'])
 def get_results_loans():
     loans = Loans.get_loans()
     return render_template('loans.html', loans=loans)
 
-# Route to render home page with list of accounts
 @app.route('/')
 def index():
     accounts = Account.get_accounts()
     return render_template('index.html', accounts=accounts)
 
-# Route to render form to add account data
 @app.route('/add_account', methods=["GET", "POST"])
 def add_data():
     if request.method == "POST":
@@ -51,7 +46,7 @@ def add_data():
 
 @app.route('/delete_account', methods=['GET'])
 def delete_account_form():
-    accounts = Account.get_accounts()  # Fetch all accounts
+    accounts = Account.get_accounts()
     return render_template('accountdelete.html', accounts=accounts)
 
 
@@ -62,7 +57,6 @@ def delete_account_route():
         Account.delete_account(int(accountID))
     return redirect('/get_accounts')
 
-# Route to handle the form submission and add a customer
 @app.route('/add_customer', methods=['GET','POST'])
 def add_customer():
     if request.method == 'POST':
