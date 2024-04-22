@@ -1,31 +1,27 @@
--- Insert statements for the Customer table
-INSERT INTO Customer(FName, LName, email, AccountID)
-VALUES
-    ('Spongebob', 'Squarepants', 'spsqaurepants@bikinibottom.com', 1234),
-    ('Patrick', 'Star', 'patstar@bikinibottom.com', 4321),
-    ('Lewis', 'Hamilton', 'benzbetter@mercedes.com', 6222),
-    ('Max', 'Verstappen', 'maxverstappen@redbull.com', 3351);
-
--- Insert statements for the Account table
-INSERT INTO Account(accountID, Balances, AccTypes, AccStatus, CustomerID)
+-- Inserting into Account table
+INSERT INTO Account (Balances, AccType, AccStatus) 
 VALUES 
-    (1234, 0, 'Checking', 'Frozen', 1111),
-    (4321, 100000000, 'Savings', 'Good', 1112),
-    (6222, 20000000, 'Checking', 'Good', 1113),
-    (3351, 90000000, 'Investing', 'Frozen', 1114);
+(1000.00, 'Savings', 'Active'),
+(500.00, 'Checking', 'Active'),
+(2000.00, 'Savings', 'Active');
 
--- Insert statements for the Transaction table
-INSERT INTO Transaction(TransAmount, TransType, TransDate, AccID, CustomerID)
-VALUES
-    (2.69, 'FOOD', '2020-01-01', 1234, 1111),
-    (100000, 'BMW M3 COMP', '2024-01-01', 4321, 1112),
-    (5000312, 'PENTHOUSE', '1999-12-28', 6222, 1113),
-    (170000, 'PORSCHE GT3', '2019-05-24', 3351, 1114);
+-- Inserting into Customer table
+INSERT INTO Customer (FName, LName, email) 
+VALUES 
+('John', 'Doe', 'john.doe@example.com'),
+('Jane', 'Smith', 'jane.smith@example.com'),
+('Alice', 'Johnson', 'alice.johnson@example.com');
 
--- Insert statements for the Loan table
-INSERT INTO Loan(LoanAmm, InterestRate, LoanStatus, customerID)
-VALUES
-    (90000, 6.00, 'ACTIVE', 1111),
-    (1000000, 0.05, 'GRACE', 1112),
-    (50000, 4.00, 'REPAYMENT', 1113),
-    (100000, 4.00, 'GRACE', 1114);
+-- Inserting into Transaction table
+INSERT INTO Transaction (TransAmount, TransType, TransDate, AccID, CustomerID) 
+VALUES 
+(100.00, 'Deposit', '2024-04-16 10:00:00', 1, 1),
+(50.00, 'Withdrawal', '2024-04-16 11:00:00', 2, 2),
+(200.00, 'Deposit', '2024-04-16 12:00:00', 3, 3);
+
+-- Inserting into Loan table
+INSERT INTO Loan (LoanAmount, InterestRate, LoanStatus, CustomerID) 
+VALUES 
+(5000.00, 0.05, 'Active', 1),
+(3000.00, 0.04, 'Active', 2),
+(7000.00, 0.06, 'Active', 3);
